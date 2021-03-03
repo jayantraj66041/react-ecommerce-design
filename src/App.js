@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from 'react';
+import Navbar from './components/Navbar';
+import Card from './components/Card';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import data from './data';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <Navbar logo="Design"/>
+      <div className="container">
+        <div className="row mt-4">
+          {
+            data.map((val,key) => (
+              <div className="col-3" key={key}>
+                <Card title={val.cat} name={val.name} price={val.price!=null?val.price+"/-":"NULL"}/>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </React.Fragment>
   );
 }
-
 export default App;
